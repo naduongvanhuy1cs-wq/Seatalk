@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 # ================== GOOGLE SHEET AUTH ==================
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope) # Dòng này gây lỗi
 client = gspread.authorize(creds)
 sheet = client.open_by_key(SHEET_ID).worksheet(SHEET_NAME)
 
@@ -177,3 +177,4 @@ def bot_callback_handler():
 if __name__ == "__main__":
     print("🚀 Flask server starting...")
     app.run(host="0.0.0.0", port=5000, debug=True)
+
